@@ -2,6 +2,7 @@ use leptos::prelude::*;
 
 use crate::definition::{觸鍵方式, 鍵組};
 use crate::engine::{微觀引擎, 微觀引擎輸出信號};
+use crate::gear::input::轉寫輸入碼序列;
 use crate::gear::{
     assignment::{作業, 作業機關輸出信號},
     caption::{字幕機關輸出信號, 字幕表示},
@@ -181,7 +182,15 @@ pub fn Rime打字機應用() -> impl IntoView {
                 .and_then(|輸入碼| 輸入碼.轉寫碼原文)
                 .or_else(並擊所得拼音)
                 // 加尖括弧表示拉丁文轉寫
-                .map(|轉寫| format!("⟨{轉寫}⟩"))
+                .map(|轉寫| {
+                    let a = 方案定義();
+                    if a.名稱 == "宮保語音" {
+                        format!("[{}]", 轉寫輸入碼序列(&轉寫))
+                    } else {
+                        format!("⟨{轉寫}⟩")
+                    }
+
+                })
         }
     });
     let 反查碼 = Signal::derive(move || {
