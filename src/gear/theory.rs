@@ -76,7 +76,7 @@ pub fn 輸入方案機關() -> 輸入方案機關輸出信號 {
                     None
                 }
             })
-            .unwrap_or(未定義方案)
+           .unwrap_or(未定義方案)
     });
 
     let 指法 = Signal::derive(move || 方案定義.read().指法);
