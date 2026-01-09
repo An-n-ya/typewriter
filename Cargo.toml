@@ -13,6 +13,9 @@ leptos = { version = "0.8", features = ["csr", "nightly"] }
 leptos-use = "0.16"
 maybe-owned = "0.3.4"
 strum = { version = "0.27.1", features = ["derive"] }
+web-sys = {
+    version = "0.3.83", features = ["HtmlAudioElement"]
+}
 
 [profile.release]
 codegen-units = 1

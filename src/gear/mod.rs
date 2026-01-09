@@ -6,3 +6,4 @@ pub mod key_press;
 pub mod layout;
 pub mod mode;
 pub mod theory;
+pub mod audio;
