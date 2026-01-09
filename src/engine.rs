@@ -3,6 +3,7 @@ use leptos::prelude::*;
 
 use crate::action::動作;
 use crate::definition::觸鍵方式;
+use crate::gear::audio::play;
 use crate::gear::{
     assignment::{作業, 作業機關, 作業機關輸出信號, 步進法},
     caption::{字幕機關, 字幕機關輸出信號, 字幕段落},
@@ -67,6 +68,7 @@ pub fn 微觀引擎() -> 微觀引擎輸出信號 {
         重置並擊狀態,
         並擊完成,
         並擊成功,
+        並擊所得拼音,
         ..
     } = 並擊;
 
@@ -231,6 +233,12 @@ pub fn 微觀引擎() -> 微觀引擎輸出信號 {
             觸鍵方式::並擊 => {
                 // 推進到下一題時, 清除上一題的並擊結果
                 // 但在最後一題完成後停下顯示結果
+                if 並擊完成() {
+                    let pinyin = 並擊所得拼音().unwrap();
+                    log!("combo finished{:?}", pinyin);
+                    play(&pinyin);
+                }
+                
                 if 批閱作業() && !作業進度完成() {
                     重置並擊狀態();
                 }

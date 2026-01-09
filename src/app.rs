@@ -2,7 +2,6 @@ use leptos::prelude::*;
 
 use crate::definition::{觸鍵方式, 鍵組};
 use crate::engine::{微觀引擎, 微觀引擎輸出信號};
-use crate::gear::audio::{play, play_test};
 use crate::gear::input::轉寫輸入碼序列;
 use crate::gear::{
     assignment::{作業, 作業機關輸出信號},
@@ -287,8 +286,6 @@ pub fn Rime打字機應用() -> impl IntoView {
             </div>
         </div>
         <Rime鍵盤圖 鍵盤佈局={方案指定佈局} 目標盤面={方案指定盤面} 配列={已選配列} 着色法={並擊動態}/>
-
-        <button on:click={move |_| play_test()}> test </button>
 
         <Rime狀態欄
             現行方案={現行方案}

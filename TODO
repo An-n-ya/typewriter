@@ -1,0 +1,7 @@
+- [ ] toning system 
+    - [ ] toning with -i suffix
+    - [ ] default toning to 1
+    - [ ] handle multiple number input
+
+- [ ] audio system
+    - [ ] set default audio for each non-existing tone
