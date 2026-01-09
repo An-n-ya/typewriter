@@ -5,14 +5,16 @@ use crate::definition::{觸鍵方式, 輸入方案定義, 轉寫法定義};
 use crate::gear::layout::拉丁字母鍵盤佈局;
 use crate::theory::{
     alphabet::拉丁字母輸入方案, cantonese::粵語輸入方案, combo_jyutping::宮保粵拼輸入方案,
-    combo_pinyin::宮保拼音輸入方案, early_middle_chinese::早期中古漢語輸入方案,
-    late_middle_chinese::晚期中古漢語輸入方案, modern_chinese::現代漢語輸入方案,
-    old_chinese::上古漢語輸入方案, old_mandarin::近古漢語輸入方案,
+    combo_pinyin::宮保拼音輸入方案, combo_speech::宮保語音輸入方案, 
+    early_middle_chinese::早期中古漢語輸入方案,late_middle_chinese::晚期中古漢語輸入方案,
+    modern_chinese::現代漢語輸入方案, old_chinese::上古漢語輸入方案, 
+    old_mandarin::近古漢語輸入方案,
 };
 
 #[derive(Clone, Copy, Default, PartialEq)]
 pub enum 方案選項 {
     #[default]
+    宮保語音,
     宮保拼音,
     拉丁字母,
     上古漢語,
@@ -26,6 +28,7 @@ pub enum 方案選項 {
 
 lazy_static! {
     pub static ref 方案選單: Vec<(方案選項, 輸入方案定義<'static>)> = vec![
+        (方案選項::宮保語音, 宮保語音輸入方案()),
         (方案選項::宮保拼音, 宮保拼音輸入方案()),
         (方案選項::拉丁字母, 拉丁字母輸入方案()),
         (方案選項::上古漢語, 上古漢語輸入方案()),
